@@ -5,7 +5,8 @@ import '../assets/styles/variables.scss';
 import { Keyboard } from './keys-list';
 
 const newKeyboard = new Keyboard();
-newKeyboard.logKey();
+newKeyboard.initializeKeyboardContainer();
+newKeyboard.drawKeyboard();
 // document.addEventListener('click', () => {
 //   const keyEvent = new KeyboardEvent('keypress', { key: 'Enter' });
 //   document.body.dispatchEvent(keyEvent);

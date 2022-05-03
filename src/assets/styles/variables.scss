@@ -1,3 +1,44 @@
-h1 {
-    color: blue;
+
+#keyboard-container {
+    border: 1px solid black;
+    padding: 15px;
+    max-width: 925px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.row {
+    display: flex;
+}
+.key {
+    min-width: 40px;
+    height: 40px;
+    border: 1px solid slategray;
+    border-radius: 4px;
+    margin: 4px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    line-height: 40px;
+    padding: 5px;
+    transition: .3s;
+    cursor: pointer;
+}
+.key:hover {
+    background-color: rgba(darkblue, .7);
+    transition: .3s;
+}
+
+#Enter {
+    width: 100px;
+}
+#Space {
+    width: 300px;
+}
+#Tab {
+    width: 80px;
+}
+#CapsLock { 
+    width: 100px;
+}
+#ShiftLeft {
+    width: 120px;
 }
