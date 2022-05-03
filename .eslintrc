@@ -9,6 +9,9 @@
     },
     "extends": "airbnb",
     "rules": {
-        "linebreak-style": ["error", "windows"]
-    },
+        "linebreak-style": ["error", "windows"],
+        "import/prefer-default-export": "off",
+        "trailing-comma": "off",
+        "comma-dangle": "off"
+    }
 }
