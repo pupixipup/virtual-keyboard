@@ -9,6 +9,16 @@
 .row {
     display: flex;
 }
+
+textarea {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-bottom: 50px;
+    width: 500px;
+    margin-top: 50px;
+}
+
 .key {
     min-width: 40px;
     height: 40px;
@@ -31,7 +41,7 @@
     width: 100px;
 }
 #Space {
-    width: 300px;
+    width: 352px;
 }
 #Tab {
     width: 80px;
@@ -41,4 +51,8 @@
 }
 #ShiftLeft {
     width: 120px;
+}
+._active {
+    transition: .3s;
+    background-color: rgba(darkblue, .7);
 }

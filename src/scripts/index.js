@@ -7,6 +7,9 @@ import { Keyboard } from './keys-list';
 const newKeyboard = new Keyboard();
 newKeyboard.initializeKeyboardContainer();
 newKeyboard.drawKeyboard();
+newKeyboard.listenVirtualKeyboard();
+newKeyboard.listenHardwareKeyboard();
+
 // document.addEventListener('click', () => {
 //   const keyEvent = new KeyboardEvent('keypress', { key: 'Enter' });
 //   document.body.dispatchEvent(keyEvent);

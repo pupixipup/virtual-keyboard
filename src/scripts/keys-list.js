@@ -276,7 +276,7 @@ export class Keyboard {
         {
           key: 'ShiftLeft',
           en: 'Shift',
-          ru: '',
+          ru: 'Shift',
         },
       ],
       [
@@ -341,12 +341,51 @@ export class Keyboard {
       keyboardRow.classList.add('row');
       for (let j = 0; j < this.keysList[i].length; j++) {
         const key = document.createElement('div');
-        key.innerHTML = this.keysList[i][j].en;
+        key.innerHTML = this.keysList[i][j].ru;
         key.classList.add('key');
         key.id = this.keysList[i][j].key;
         keyboardRow.append(key);
       }
       document.querySelector('#keyboard-container').append(keyboardRow);
     }
+  }
+
+  listenVirtualKeyboard() {
+    const keyboardContainer = document.querySelector('#keyboard-container');
+    keyboardContainer.addEventListener('click', (event) => {
+      if (event.target.classList.contains('key')) {
+        const keyEvent = new KeyboardEvent('keydown', {
+          key: 'e',
+          keyCode: 69,
+          code: 'KeyE',
+          which: 69,
+          shiftKey: false,
+          ctrlKey: false,
+          metaKey: false,
+        });
+        document.body.dispatchEvent(keyEvent);
+        console.log(keyEvent);
+      }
+    });
+  }
+
+  listenHardwareKeyboard() {
+    const keyDivs = document.querySelectorAll('.key');
+    window.addEventListener('keypress', (event) => {
+      console.log(event);
+      for (let i = 0; i < keyDivs.length; i++) {
+        if (keyDivs[i].id === event.code) {
+          keyDivs[i].classList.add('_active');
+        }
+      }
+    });
+    window.addEventListener('keyup', (event) => {
+      console.log(event);
+      for (let i = 0; i < keyDivs.length; i++) {
+        if (keyDivs[i].id === event.code) {
+          keyDivs[i].classList.remove('_active');
+        }
+      }
+    });
   }
 }
