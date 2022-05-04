@@ -2,6 +2,7 @@ export class Keyboard {
   constructor() {
     this.isAltPressed = false;
     this.isShiftPressed = false;
+    this.isCaps = false;
     this.keysList = [
       [
         {
@@ -424,8 +425,8 @@ export class Keyboard {
 
   initializeKeyboardContainer() {
     document.body.innerHTML = '';
-    let textarea = document.createElement('div');
-    textarea.innerHTML = ' <textarea name="" onblur="this.focus()" autofocus id="" cols="30" rows="10"></textarea>';
+    const textarea = document.createElement('div');
+    textarea.innerHTML = ' <textarea id="text-area" cols="30" rows="10"></textarea>';
     document.body.append(textarea);
     const keyboardContainer = document.createElement('div');
     keyboardContainer.id = ('keyboard-container');
@@ -446,6 +447,8 @@ export class Keyboard {
         key.classList.add('key');
         key.classList.add(this.keysList[i][j].key);
         key.id = this.keysList[i][j].key;
+        key.dataset.ruValue = this.keysList[i][j].ru;
+        key.dataset.enValue = this.keysList[i][j].en;
         key.dataset.keyLetter = this.keysList[i][j].key;
         key.dataset.keyId = this.keysList[i][j].code;
         keyboardRow.append(key);
@@ -486,6 +489,36 @@ export class Keyboard {
       for (let i = 0; i < keyDivs.length; i++) {
         if (keyDivs[i].id === event.code) {
           keyDivs[i].classList.remove('_active');
+        }
+      }
+    });
+  }
+
+  inputCharacter() {
+    window.addEventListener('click', (event) => {
+      if (event.target.classList.contains('key')) {
+        const key = event.target;
+        const textarea = document.querySelector('#text-area');
+        if (key.id === 'Backspace') {
+          textarea.value = textarea.value.slice(0, -1);
+        } else if (key.id === 'Space') {
+          textarea.value += ' ';
+        } else if (key.id === 'Tab') {
+          textarea.value += '\t';
+        } else if (key.id === 'CapsLock') {
+          textarea.value += '';
+          key.classList.toggle('_caps-active');
+          this.isCaps = !this.isCaps;
+        } else if (key.id === 'Enter') {
+          textarea.value += '\n';
+        } else if (key.id === 'ControlLeft' || key.id === 'ControlRight' || key.id === 'MetaLeft'
+        || key.id === 'ShiftLeft' || key.id === 'ShiftRight'
+        || key.id === 'AltLeft' || key.id === 'AltRight'
+        || key.id === 'MetaRight' || key.id === 'AltLeft' || key.id === 'AltRight') {
+          textarea.value += '';
+        } else {
+          const keyToInsert = localStorage.currentLanguage === 'ru' ? key.dataset.ruValue : key.dataset.enValue;
+          textarea.value += this.isCaps ? keyToInsert.toUpperCase() : keyToInsert.toLowerCase();
         }
       }
     });

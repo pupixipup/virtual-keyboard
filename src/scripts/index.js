@@ -14,6 +14,7 @@ newKeyboard.drawKeyboard(localStorage.currentLanguage);
 newKeyboard.listenVirtualKeyboard();
 newKeyboard.listenHardwareKeyboard();
 newKeyboard.trackALtShift();
+newKeyboard.inputCharacter();
 
 // document.addEventListener('click', () => {
 //   const keyEvent = new KeyboardEvent('keypress', { key: 'Enter' });
