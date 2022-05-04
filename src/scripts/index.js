@@ -4,11 +4,16 @@ import '../assets/styles/variables.scss';
 
 import { Keyboard } from './keys-list';
 
+window.addEventListener('load', () => {
+  localStorage.currentLanguage = localStorage.currentLanguage || 'en';
+});
+
 const newKeyboard = new Keyboard();
 newKeyboard.initializeKeyboardContainer();
-newKeyboard.drawKeyboard();
+newKeyboard.drawKeyboard(localStorage.currentLanguage);
 newKeyboard.listenVirtualKeyboard();
 newKeyboard.listenHardwareKeyboard();
+newKeyboard.trackALtShift();
 
 // document.addEventListener('click', () => {
 //   const keyEvent = new KeyboardEvent('keypress', { key: 'Enter' });
