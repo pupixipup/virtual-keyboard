@@ -426,7 +426,7 @@ export class Keyboard {
   initializeKeyboardContainer() {
     document.body.innerHTML = '';
     const textarea = document.createElement('div');
-    textarea.innerHTML = ' <textarea id="text-area" cols="30" rows="10"></textarea>';
+    textarea.innerHTML = ' <textarea id="text-area" cols="30" autofocus rows="10"></textarea>';
     document.body.append(textarea);
     const keyboardContainer = document.createElement('div');
     keyboardContainer.id = ('keyboard-container');
@@ -514,11 +514,17 @@ export class Keyboard {
         } else if (key.id === 'ControlLeft' || key.id === 'ControlRight' || key.id === 'MetaLeft'
         || key.id === 'ShiftLeft' || key.id === 'ShiftRight'
         || key.id === 'AltLeft' || key.id === 'AltRight'
+        || key.id === 'ArrowLeft' || key.id === 'ArrowRight'
+        || key.id === 'ArrowUp'
         || key.id === 'MetaRight' || key.id === 'AltLeft' || key.id === 'AltRight') {
           textarea.value += '';
         } else {
           const keyToInsert = localStorage.currentLanguage === 'ru' ? key.dataset.ruValue : key.dataset.enValue;
-          textarea.value += this.isCaps ? keyToInsert.toUpperCase() : keyToInsert.toLowerCase();
+          const caseLetter = this.isCaps ? keyToInsert.toUpperCase() : keyToInsert.toLowerCase();
+          const caretPosition = textarea.selectionStart;
+          textarea.value = [textarea.value.slice(0, caretPosition), caseLetter, textarea.value.slice(caretPosition)].join('');
+        // eslint-disable-next-line max-len
+        // textarea.value = textarea.value.split('').splice(document.querySelector('textarea').selectionStart, 0, caseLetter).join('');
         }
       }
     });
