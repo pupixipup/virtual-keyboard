@@ -424,10 +424,10 @@ export class Keyboard {
   }
 
   initializeKeyboardContainer() {
-    document.body.innerHTML = '';
-    const textarea = document.createElement('div');
-    textarea.innerHTML = ' <textarea id="text-area" cols="30" autofocus rows="10"></textarea>';
-    document.body.append(textarea);
+    // document.body.innerHTML = '';
+    if (document.querySelector('#keyboard-container')) {
+      document.querySelector('#keyboard-container').remove();
+    }
     const keyboardContainer = document.createElement('div');
     keyboardContainer.id = ('keyboard-container');
     document.body.append(keyboardContainer);

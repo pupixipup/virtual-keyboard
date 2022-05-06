@@ -5,6 +5,9 @@ import '../assets/styles/variables.scss';
 import { Keyboard } from './keys-list';
 
 window.addEventListener('load', () => {
+  const textarea = document.createElement('div');
+  textarea.innerHTML = '<h1 class="note">Переключение языка на Shift Alt (Windows)</h1>  <textarea id="text-area" cols="30" autofocus rows="10"></textarea>';
+  document.body.prepend(textarea);
   localStorage.currentLanguage = localStorage.currentLanguage || 'en';
 });
 
