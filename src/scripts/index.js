@@ -20,4 +20,3 @@ newKeyboard.trackALtShift();
 newKeyboard.inputCharacter();
 
 alert('Pull Request link: https://github.com/pupixipup/virtual-keyboard/pull/1');
->>>>>>> Stashed changes
