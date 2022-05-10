@@ -19,14 +19,3 @@ newKeyboard.listenHardwareKeyboard();
 newKeyboard.trackALtShift();
 newKeyboard.inputCharacter();
 
-// document.addEventListener('click', () => {
-//   const keyEvent = new KeyboardEvent('keypress', { key: 'Enter' });
-//   document.body.dispatchEvent(keyEvent);
-//   console.log(keyEvent);
-// });
-
-// document.body.addEventListener('keypress', (e) => {
-//   if (e.key === 'Enter') {
-//     document.querySelector('.inp').value = '1';
-//   }
-// });

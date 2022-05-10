@@ -424,7 +424,6 @@ export class Keyboard {
   }
 
   initializeKeyboardContainer() {
-    // document.body.innerHTML = '';
     if (document.querySelector('#keyboard-container')) {
       document.querySelector('#keyboard-container').remove();
     }
@@ -524,8 +523,7 @@ export class Keyboard {
           const caretPosition = textarea.selectionStart;
           textarea.value = [textarea.value.slice(0, caretPosition), caseLetter, textarea.value.slice(caretPosition)].join('');
         // eslint-disable-next-line max-len
-        // textarea.value = textarea.value.split('').splice(document.querySelector('textarea').selectionStart, 0, caseLetter).join('');
-        }
+            }
       }
     });
   }
